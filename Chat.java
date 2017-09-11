@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 public class Chat {
 	
 	/**
-	* dobimo osnovno stran
+	* Funkcija, ki nas poveže s strežnikom. 
 	*/
 	public static void get_index(){
         try {
@@ -30,7 +30,7 @@ public class Chat {
     }
 	
 	/**
-	* funkcija, ki vrne seznam trenutnih uporabnikov.
+	* Funkcija, ki vzame ime uporabnika in vrne seznam vseh prijavljenih uporabnikov. 
 	*/
 	public static List<User> get_users(String name) {
 		ObjectMapper mapper = new ObjectMapper(); //z mapperjem pretvarjamo iz in v Json.
@@ -56,8 +56,8 @@ public class Chat {
 	}
 	
 	/**
-	* funkcija, ki dobi ime uporabnika (ki še ni vpisan) in ga vpiše. Èe je uporabnik
-	* že vpisan, ga ne vpiše še enkrat. 
+	* Funkcija, ki ji podamo ime s katerim se želimo vpisati in nam vrne
+	* true, èe nas je uspela vpisati in false, èe nas ni.  
 	*/
 	public static Boolean log_in(String username) {  
 	URI uri;
@@ -145,7 +145,7 @@ public class Chat {
 	
 	/**
 	* Funkcija vzame tri parametre: ime uporabnika, ki pošilja sporoèilo (ki mora biti prijavljen), 
-	* ime uporabnika, ki bo sporoèilo prejel in vsebino sporoèila. 
+	* ime uporabnika, ki bo sporoèilo prejel in vsebino sporoèila in pošle sporoèilo. 
 	*/
 	public static void send (String me, String friend, String myMessage ){
 		 URI uri;
