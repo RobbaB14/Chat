@@ -70,7 +70,5 @@ public class Message {
 	public void setSent_at(Date sent_at) {
 		this.sent_at = sent_at;
 	}
-
-
 }
 

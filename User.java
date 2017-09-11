@@ -36,7 +36,5 @@ public class User {
 	@JsonProperty("last_active")
 	public void setLastActive(Date lastActive) {
 		this.lastActive = lastActive;
-	}
-	
-	
+	}	
 }

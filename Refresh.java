@@ -2,7 +2,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Refresh extends TimerTask {
-
+/*	Vsako sekundo posodobimo seznam prijavljenih uporabnikov in pogledamo,
+	èe smo dobili kakšno novo sporoèilo. */
+	
 	String name;
 
 	public Refresh(String name) {
