@@ -309,12 +309,8 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 	    {
 	        if ( c == '\"' )
 	            builder.append( "\\\"" );
-/*	        else if( c == '\r' )
-	            builder.append( "\\r" );*/
 	        else if( c == '\t' )
 	            builder.append( "\\t" );
-/*	        else if( c < 32 || c >= 127 )
-	            builder.append( String.format( "\\u%04x", (int)c ) );*/
 	        else
 	            builder.append( c );
 	    }
