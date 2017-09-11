@@ -61,7 +61,7 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 				null, null, "");
 		this.name = s;
 		
-		// èe je s = null, naj ga zapre. 
+		//Èe je s = null, naj se program zapre. (to je takrat, ko pritisnemo x ali Cancel). 
 		if (s == null){
 			System.exit(0);		
 		}		
@@ -98,7 +98,7 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 		getContentPane().add(sp, gbc_txtrChatHistory);
 		
 		
-		list = new JList();//Obmoèje na katerem bo seznam oprijavljenih uporabnikov. S klikom izberemo, komu želimo poslati sporoèilo. 
+		list = new JList();//Obmoèje na katerem bo seznam prijavljenih uporabnikov. S klikom izberemo, komu želimo poslati sporoèilo. 
 		list.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.gridheight = 8;
@@ -113,7 +113,7 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 		list.setListData(users.toArray());
 		list.addListSelectionListener(new Listener());
 		
-		//Ustvarimo refresh, ki bo osveževal naš seznam uporabnikov in gledal, èe smo dobili kak
+		//Ustvarimo refresh, ki bo osveževal naš seznam uporabnikov in gledal, èe smo dobili kakšno sporoèilo.
 		Refresh refresh = new Refresh(name);
 		refresh.activate();
 		
@@ -128,12 +128,12 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 		}});
 		
 		input.addKeyListener(new KeyAdapter() {
-			//Ko uporabnik pritisne enter, pošlemo sporoèilo, pobrišemo vnosno vrstico in izpišemo besedilo v chatHistory.
+			//Ko uporabnik pritisne enter, pošljemo sporoèilo, pobrišemo vnosno vrstico in izpišemo besedilo v chatHistory.
 			public void keyReleased(KeyEvent arg0) {
 				Integer code = arg0.getKeyCode();
 				if (code == 10) {
 					if (receiver.equals("vsi")){
-						Chat.send(name, fixText(input.getText()));		
+						Chat.send(name, fixText(input.getText())); 	
 					} else {
 						Chat.send(name, receiver, fixText(input.getText()));
 					}	
@@ -155,7 +155,7 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 						}else { //Vrstica, ki jo izpisujemo ni zadnja.
 							int n = 0;
 							boolean lineDone = false;
-							while (n <= 5){ //Poskušamo najti ' ', za to, da bomo èimlepše delili besedilo. 
+							while (n <= 5){ //Poskušamo najti ' ', zato, da bomo èimlepše delili besedilo. 
 								char last =res.charAt(num-1+n);
 								if (last == ' '){
 									String line = res.substring(0,num-1+n);
@@ -233,7 +233,7 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 	public static void reciveMessage(){
 		List<Message> message = Chat.recive(name);
 		for (Message i: message){		
-			String res = i.getText();	//V 'res' bomo shranjevali del sporoèila, ki ga še nismo zapisali. 	
+			String res = i.getText();//V 'res' bomo shranjevali del sporoèila, ki ga še nismo zapisali. 	
 			Boolean firstLine = true; //Prva vrstica je posebna, ker vsebuje ime pošiljatelja. 
 			int len = res.length(); 
 			int num = 50; //Nastavimo dolžino vrstice. 
@@ -283,7 +283,7 @@ public class Gui extends JFrame implements ActionListener, KeyListener{
 
 
 	/**
-	 * Receiver nastavimo na uporabnika, ki smo ga izbrali v list-u. 
+	 * String receiver nastavimo na uporabnika, ki smo ga izbrali v list-u. 
 	 */
 	public static void setReceiver () {
 		if (!list.isSelectionEmpty()){
